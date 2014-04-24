@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <!-- Views Definitions -->
+        <record model="ir.ui.view" id="invoice_view_tree">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_tree"/>
+            <field name="name">invoice_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_invoice_lines_tree">
+            <field name="name">Invoice Lines View</field>
+            <field name="res_model">account.invoice.line</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_lines_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_invoice.invoice_line_view_tree"/>
+            <field name="act_window" ref="act_invoice_lines_tree"/>
+        </record>
+        <menuitem parent="account_invoice.menu_invoices" action="act_invoice_lines_tree"
+            id="menu_invoice_lines_tree"/>
+
+        <record model="ir.action.wizard" id="act_force_invoice_draw">
+            <field name="name">Invoice Force Draw</field>
+            <field name="wiz_name">account.invoice.force_draw</field>
+        </record>
+        <record model="ir.action.keyword" id="action_invoice_force_draw_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="act_force_invoice_draw"/>
+        </record>
+
+    </data>
+</tryton>

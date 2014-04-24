@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <!-- Portfolio By Party Detailed -->
+        <record model="ir.action.report" id="report_portfolio_party_detailed">
+            <field name="name">Portfolio by Party Detailed</field>
+            <field name="model">party.party</field>
+            <field name="report_name">party.portfolio_party_detailed</field>
+            <field name="report">account_plus/portfolio_party_detailed.ods</field>
+        </record>
+        <record model="ir.action.keyword" id="report_portfolio_party_detailed_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="report_portfolio_party_detailed"/>
+        </record>
+
+        <record model="ir.ui.view" id="party_view_tree">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_tree"/>
+            <field name="name">party_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form</field>
+        </record>
+
+    </data>
+</tryton>

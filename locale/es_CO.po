@@ -1,0 +1,456 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.party:"
+msgid "Invalid VAT Number \"%s\"."
+msgstr "Número NIT \"%s\" Inválido."
+
+msgctxt "error:party.party:"
+msgid "VAT Number already exists!"
+msgstr "El número NIT ya existe!"
+
+msgctxt "field:account.configuration,resolution:"
+msgid "Resolution"
+msgstr "Resolución DIAN"
+
+msgctxt "field:account.invoice,estimate_pay_date:"
+msgid "Estimate Pay Date"
+msgstr "Fecha Estimada de Pago"
+
+msgctxt "field:account.invoice.force_draw.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move,balance:"
+msgid "Balance"
+msgstr "Balance"
+
+msgctxt "field:account.move.force_draw.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.print_trial_balance.start,accounts_with_balance:"
+msgid "Accounts with Balance"
+msgstr "Cuentas con Saldos"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,empty_account:"
+msgid "Empty Account"
+msgstr "Cuenta vacía"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,end_code:"
+msgid "End Code Range"
+msgstr "Rango de Código Final"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,end_period:"
+msgid "End Period"
+msgstr "Período final"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Año Fiscal"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,party:"
+msgid "Party"
+msgstr "Terceros"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,posted:"
+msgid "Posted Move"
+msgstr "Asiento Confirmado"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,start_code:"
+msgid "Start Code Range"
+msgstr "Rango de Código Inicial"
+
+msgctxt "field:account_plus.print_auxiliary_book.start,start_period:"
+msgid "Start Period"
+msgstr "Período Inicial"
+
+msgctxt "field:account_plus.print_auxiliary_party.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account_plus.print_auxiliary_party.start,empty_account:"
+msgid "Empty Account"
+msgstr "Incluir cuentas vacías"
+
+msgctxt "field:account_plus.print_auxiliary_party.start,end_period:"
+msgid "End Period"
+msgstr "Período final"
+
+msgctxt "field:account_plus.print_auxiliary_party.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Año Fiscal"
+
+msgctxt "field:account_plus.print_auxiliary_party.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account_plus.print_auxiliary_party.start,party:"
+msgid "Party"
+msgstr "Terceros"
+
+msgctxt "field:account_plus.print_auxiliary_party.start,posted:"
+msgid "Posted Move"
+msgstr "Asiento Confirmado"
+
+msgctxt "field:account_plus.print_auxiliary_party.start,start_period:"
+msgid "Start Period"
+msgstr "Período Inicial"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,empty_account:"
+msgid "Empty Account"
+msgstr "Cuenta vacía"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,end_code:"
+msgid "End Code"
+msgstr "Código Final"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,end_period:"
+msgid "End Period"
+msgstr "Período final"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Año Fiscal"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,party:"
+msgid "Party"
+msgstr "Terceros"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,posted:"
+msgid "Posted Move"
+msgstr "Asiento Confirmado"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,start_code:"
+msgid "Start Code"
+msgstr "Código Inicial"
+
+msgctxt "field:account_plus.print_trial_balance_detailed.start,start_period:"
+msgid "Start Period"
+msgstr "Período Inicial"
+
+msgctxt "field:party.party,check_digit:"
+msgid "DV"
+msgstr "DV"
+
+msgctxt "field:party.party,commercial_name:"
+msgid "Commercial Name"
+msgstr "Nombre Comercial"
+
+msgctxt "field:party.party,first_family_name:"
+msgid "Primer Apellido"
+msgstr "Primer Apellido"
+
+msgctxt "field:party.party,first_name:"
+msgid "Primer Nombre"
+msgstr "Primer Nombre"
+
+msgctxt "field:party.party,regime_tax:"
+msgid "Regimen de Impuestos"
+msgstr "Regimen de Impuestos"
+
+msgctxt "field:party.party,second_family_name:"
+msgid "Segundo Apellido"
+msgstr "Segundo Apellido"
+
+msgctxt "field:party.party,second_name:"
+msgid "Segundo Nombre"
+msgstr "Segundo Nombre"
+
+msgctxt "field:party.party,type_document:"
+msgid "Type Document"
+msgstr "Tipo de Documento"
+
+msgctxt "field:party.party,vat_number_city:"
+msgid "VAT Number City"
+msgstr "Ciudad Expedición de Documento"
+
+msgctxt "help:account.print_trial_balance.start,accounts_with_balance:"
+msgid "Show accounts with balances in previous periods"
+msgstr "Muestra las cuentas con saldos en periodos anteriores"
+
+msgctxt "help:account_plus.print_auxiliary_book.start,empty_account:"
+msgid "With account without move"
+msgstr "Con cuenta sin asiento."
+
+msgctxt "help:account_plus.print_auxiliary_book.start,posted:"
+msgid "Show only posted move"
+msgstr "Muestra sólo asientos confirmados."
+
+msgctxt "help:account_plus.print_auxiliary_party.start,empty_account:"
+msgid "With account without move"
+msgstr "Cuentas sin asientos."
+
+msgctxt "help:account_plus.print_auxiliary_party.start,posted:"
+msgid "Show only posted move"
+msgstr "Sólo asientos confirmados."
+
+msgctxt "help:account_plus.print_trial_balance_detailed.start,empty_account:"
+msgid "With account without move"
+msgstr "Con cuenta sin asiento."
+
+msgctxt "help:account_plus.print_trial_balance_detailed.start,posted:"
+msgid "Show only posted move"
+msgstr "Muestra sólo asientos confirmados."
+
+msgctxt "model:account.invoice.force_draw.start,name:"
+msgid "Invoice Force Draw"
+msgstr "Forzar a Borrador"
+
+msgctxt "model:account.move.force_draw.start,name:"
+msgid "Move Force Draw"
+msgstr "Forzar a Borrador"
+
+msgctxt "model:account_plus.print_auxiliary_book.start,name:"
+msgid "Auxiliary Book Start"
+msgstr "Imprimir Libro Auxiliar"
+
+msgctxt "model:account_plus.print_auxiliary_party.start,name:"
+msgid "Auxiliary Party Start"
+msgstr "Inicio de Auxiliar por Tercero"
+
+msgctxt "model:account_plus.print_trial_balance_detailed.start,name:"
+msgid "Print Trial Balance Detailed"
+msgstr "Imprimir Balance de Prueba Detallado"
+
+msgctxt "model:ir.action,name:"
+msgid "Add Analytic Lines"
+msgstr "Agregar Centros de Costos a Líneas"
+
+msgctxt "model:ir.action,name:act_force_invoice_draw"
+msgid "Invoice Force Draw"
+msgstr "Forzar a Borrador"
+
+msgctxt "model:ir.action,name:act_force_move_draw"
+msgid "Move Force Draw"
+msgstr "Forzar a Borrador"
+
+msgctxt "model:ir.action,name:act_invoice_lines_tree"
+msgid "Invoice Lines View"
+msgstr "Vista de Línea de Factura"
+
+msgctxt "model:ir.action,name:act_move_lines_tree"
+msgid "Move Lines View"
+msgstr "Vista Líneas de Asientos"
+
+msgctxt "model:ir.action,name:report_account_move_sheet"
+msgid "Account Move Sheet"
+msgstr "Asiento Contable"
+
+msgctxt "model:ir.action,name:report_auxiliary_book"
+msgid "Auxiliary Book"
+msgstr "Libro Auxiliar"
+
+msgctxt "model:ir.action,name:report_auxiliary_party"
+msgid "Auxiliary Party"
+msgstr "Auxiliar por Tercero"
+
+msgctxt "model:ir.action,name:report_balance_sheet"
+msgid "Balance Sheet"
+msgstr "Estado de Situación Financiera"
+
+msgctxt "model:ir.action,name:report_income_statement"
+msgid "Income Statement"
+msgstr "Estado de Resultados Integral"
+
+msgctxt "model:ir.action,name:report_portfolio_party_detailed"
+msgid "Portfolio by Party Detailed"
+msgstr "Cartera por Terceros Detallada"
+
+msgctxt "model:ir.action,name:report_trial_balance_detailed"
+msgid "Trial Balance Detailed"
+msgstr "Libro Auxiliar"
+
+msgctxt "model:ir.action,name:wizard_print_auxiliary_book"
+msgid "Print Auxiliary Book"
+msgstr "Imprimir Libro Auxiliar"
+
+msgctxt "model:ir.action,name:wizard_print_auxiliary_party"
+msgid "Print Auxiliary Party"
+msgstr "Imprimir Auxiliar por Tercero"
+
+msgctxt "model:ir.action,name:wizard_trial_balance_detailed"
+msgid "Trial Balance Detailed"
+msgstr "Balance de Prueba Detallado"
+
+msgctxt "model:ir.ui.menu,name:"
+msgid "Exogenous Reports"
+msgstr "Información Exógena"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_lines_tree"
+msgid "Invoice Lines View"
+msgstr "Vista de Líneas de Factura"
+
+msgctxt "model:ir.ui.menu,name:menu_move_lines_tree"
+msgid "Move Lines View"
+msgstr "Vista Líneas de Asientos"
+
+msgctxt "model:ir.ui.menu,name:menu_print_auxiliary_book"
+msgid "Print Auxiliary Book"
+msgstr "Imprimir Libro Auxiliar"
+
+msgctxt "model:ir.ui.menu,name:menu_print_auxiliary_party"
+msgid "Print Auxiliary Party"
+msgstr "Imprimir Auxiliar por Tercero"
+
+msgctxt "model:ir.ui.menu,name:menu_trial_balance_detailed"
+msgid "Trial Balance Detailed"
+msgstr "Balance de Prueba Detallado"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "Checking Account"
+msgstr "Cuenta Corriente"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "Saving Account"
+msgstr "Cuenta de Ahorros"
+
+msgctxt "selection:party.party,regime_tax:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:party.party,regime_tax:"
+msgid "Autoretenedor"
+msgstr "Autoretenedor"
+
+msgctxt "selection:party.party,regime_tax:"
+msgid "Domiciliado en Extranjero"
+msgstr "Domiciliado en Extranjero"
+
+msgctxt "selection:party.party,regime_tax:"
+msgid "Entidad Estatal"
+msgstr "Entidad Estatal"
+
+msgctxt "selection:party.party,regime_tax:"
+msgid "Gran Contribuyente"
+msgstr "Gran Contribuyente"
+
+msgctxt "selection:party.party,regime_tax:"
+msgid "Persona Natural"
+msgstr "Persona Natural"
+
+msgctxt "selection:party.party,regime_tax:"
+msgid "Regimen Comun"
+msgstr "Regimen Comun"
+
+msgctxt "selection:party.party,regime_tax:"
+msgid "Regimen Simplificado"
+msgstr "Regimen Simplificado"
+
+msgctxt "selection:party.party,type_document:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:party.party,type_document:"
+msgid "Cedula de Ciudadania"
+msgstr ""
+
+msgctxt "selection:party.party,type_document:"
+msgid "Cedula de Extranjeria"
+msgstr ""
+
+msgctxt "selection:party.party,type_document:"
+msgid "NIT"
+msgstr ""
+
+msgctxt "selection:party.party,type_document:"
+msgid "Pasaporte"
+msgstr ""
+
+msgctxt "selection:party.party,type_document:"
+msgid "Registro Civil de Nacimiento"
+msgstr ""
+
+msgctxt "selection:party.party,type_document:"
+msgid "Sin identificacion del Exterior o para uso definido por la DIAN"
+msgstr ""
+
+msgctxt "selection:party.party,type_document:"
+msgid "Tarjeta de Extranjeria"
+msgstr ""
+
+msgctxt "selection:party.party,type_document:"
+msgid "Tarjeta de Identidad"
+msgstr ""
+
+msgctxt "selection:party.party,type_document:"
+msgid "Tipo de Documento Extranjero"
+msgstr ""
+
+msgctxt "view:account.move.line:"
+msgid "Account Move Lines"
+msgstr "Líneas de Asiento"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Crédito"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Débito"
+
+msgctxt "view:account_plus.print_auxiliary_book.start:"
+msgid "Print Auxiliary Book"
+msgstr "Imprimir Libro Auxiliar"
+
+msgctxt "view:account_plus.print_auxiliary_party.start:"
+msgid "Print Auxiliary Party"
+msgstr "Imprimir Auxiliar por Tercero"
+
+msgctxt "view:account_plus.print_trial_balance_detailed.start:"
+msgid "Print Trial Balance"
+msgstr "Imprimir Balance de Prueba Detallado"
+
+msgctxt "view:party.party:"
+msgid "Fiscal - Financial"
+msgstr "Fiscal"
+
+msgctxt "wizard_button:account.print_trial_balance,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.print_trial_balance,start,print_:"
+msgid "Print"
+msgstr "Imprimir"
+
+msgctxt "wizard_button:account_plus.print_auxiliary_book,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account_plus.print_auxiliary_book,start,print_:"
+msgid "Print"
+msgstr "Imprimir"
+
+msgctxt "wizard_button:account_plus.print_auxiliary_party,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account_plus.print_auxiliary_party,start,print_:"
+msgid "Print"
+msgstr "Imprimir"
+
+msgctxt "wizard_button:account_plus.print_trial_balance_detailed,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt ""
+"wizard_button:account_plus.print_trial_balance_detailed,start,print_:"
+msgid "Print"
+msgstr "Imprimir"

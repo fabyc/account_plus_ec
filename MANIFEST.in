@@ -1,0 +1,12 @@
+include INSTALL
+include README
+include TODO
+include COPYRIGHT
+include CHANGELOG
+include LICENSE
+include tryton.cfg
+include view/*.xml
+include *.xml
+include *.odt
+include *.ods
+include locale/*.po

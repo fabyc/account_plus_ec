@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.action.report" id="report_account_move_sheet">
+            <field name="name">Account Move Sheet</field>
+            <field name="model">account.move</field>
+            <field name="report_name">account.move.sheet</field>
+            <field name="report">account_plus/move_account_sheet.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_account_move_sheet_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.move,-1</field>
+            <field name="action" ref="report_account_move_sheet"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">account.move</field>
+            <field name="inherit" ref="account.move_view_form"/>
+            <field name="name">move_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_lines_view_tree">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="name">move_lines_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_move_lines_tree">
+            <field name="name">Move Lines View</field>
+            <field name="res_model">account.move.line</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_lines_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_lines_view_tree"/>
+            <field name="act_window" ref="act_move_lines_tree"/>
+        </record>
+        <menuitem parent="account.menu_entries" action="act_move_lines_tree"
+            id="menu_move_lines_tree"/>
+
+        <record model="ir.action.wizard" id="act_force_move_draw">
+            <field name="name">Move Force Draw</field>
+            <field name="wiz_name">account.move.force_draw</field>
+        </record>
+        <record model="ir.action.keyword" id="action_move_force_draw_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move,-1</field>
+            <field name="action" ref="act_force_move_draw"/>
+        </record>
+
+    </data>
+</tryton>

@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <!-- Balance Trial Detailed -->
+        <record model="ir.ui.view" id="print_trial_balance_detailed_start_view_form">
+            <field name="model">account_plus.print_trial_balance_detailed.start</field>
+            <field name="type">form</field>
+            <field name="name">trial_balance_detailed_start_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_trial_balance_detailed">
+            <field name="name">Trial Balance Detailed</field>
+            <field name="wiz_name">account_plus.print_trial_balance_detailed</field>
+        </record>
+        <record model="ir.action.report" id="report_trial_balance_detailed">
+            <field name="name">Trial Balance Detailed</field>
+            <field name="model"></field>
+            <field name="report_name">account_plus.trial_balance_detailed</field>
+            <field name="report">account_plus/trial_balance_detailed.odt</field>
+        </record>
+        <menuitem parent="account.menu_reporting" action="wizard_trial_balance_detailed"
+            id="menu_trial_balance_detailed" icon="tryton-print"/>
+
+        <!-- Print Auxiliary Book -->
+        <record model="ir.ui.view" id="print_auxiliary_book_start_view_form">
+            <field name="model">account_plus.print_auxiliary_book.start</field>
+            <field name="type">form</field>
+            <field name="name">print_auxiliary_book_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_auxiliary_book">
+            <field name="name">Print Auxiliary Book</field>
+            <field name="wiz_name">account_plus.print_auxiliary_book</field>
+        </record>
+
+        <menuitem parent="account.menu_reporting" action="wizard_print_auxiliary_book"
+            id="menu_print_auxiliary_book" icon="tryton-print"/>
+
+        <record model="ir.action.report" id="report_auxiliary_book">
+            <field name="name">Auxiliary Book</field>
+            <field name="model"></field>
+            <field name="report_name">account.auxiliary_book</field>
+            <field name="report">account_plus/auxiliary_book.odt</field>
+        </record>
+
+        <!-- Print Auxiliary Party -->
+        <record model="ir.ui.view" id="print_auxiliary_party_start_view_form">
+            <field name="model">account_plus.print_auxiliary_party.start</field>
+            <field name="type">form</field>
+            <field name="name">print_auxiliary_party_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_auxiliary_party">
+            <field name="name">Print Auxiliary Party</field>
+            <field name="wiz_name">account_plus.print_auxiliary_party</field>
+        </record>
+
+        <menuitem parent="account.menu_reporting" action="wizard_print_auxiliary_party"
+            id="menu_print_auxiliary_party" icon="tryton-print"/>
+
+        <record model="ir.action.report" id="report_auxiliary_party">
+            <field name="name">Auxiliary Party</field>
+            <field name="model"></field>
+            <field name="report_name">account.auxiliary_party</field>
+            <field name="report">account_plus/auxiliary_party.odt</field>
+        </record>
+
+        <record model="ir.ui.view" id="print_trial_balance_start_view_form">
+            <field name="model">account.print_trial_balance.start</field>
+            <field name="inherit" ref="account.print_trial_balance_start_view_form"/>
+            <field name="name">print_trial_balance_start_form</field>
+        </record>
+
+        <!-- Balance Sheet -->
+        <record model="ir.action.report" id="report_balance_sheet">
+            <field name="name">Balance Sheet</field>
+            <field name="model">account.account.type</field>
+            <field name="report_name">account.balance_sheet</field>
+            <field name="report">account_plus/balance_sheet.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_balance_sheet_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.account.type,-1</field>
+            <field name="action" ref="report_balance_sheet"/>
+        </record>
+
+        <!-- Income Statement -->
+        <record model="ir.action.report" id="report_income_statement">
+            <field name="name">Income Statement</field>
+            <field name="model">account.account.type</field>
+            <field name="report_name">account.income_statement</field>
+            <field name="report">account_plus/income_statement.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_income_statement_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.account.type,-1</field>
+            <field name="action" ref="report_income_statement"/>
+        </record>
+    </data>
+</tryton>

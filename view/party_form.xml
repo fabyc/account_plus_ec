@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page[@id='general']/field[@name='addresses']"
+        position="after">
+        <label name="commercial_name"/>
+        <field name="commercial_name"/>
+    </xpath>
+    <xpath
+        expr="/form/notebook/page[@id='accounting']/label[@name='vat_number']"
+        position="before">
+        <label name="type_document"/>
+        <field name="type_document"/>
+    </xpath>
+    <xpath
+        expr="/form/notebook/page[@id='accounting']/field[@name='vat_number']"
+        position="after">
+        <label name="check_digit"/>
+        <field name="check_digit"/>
+    </xpath>
+    <xpath
+        expr="/form/notebook/page[@id='accounting']"
+        position="after">
+        <page string="Fiscal" id="fiscal">
+            <label name="regime_tax"/>
+            <field name="regime_tax"/>
+            <label name="vat_number_city"/>
+            <field name="vat_number_city"/>
+            <label name="first_name"/>
+            <field name="first_name"/>
+            <label name="second_name"/>
+            <field name="second_name"/>
+            <label name="first_family_name"/>
+            <field name="first_family_name"/>
+            <label name="second_family_name"/>
+            <field name="second_family_name"/>
+        </page>
+    </xpath>
+</data>
