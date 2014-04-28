@@ -11,11 +11,12 @@ __metaclass__ = PoolMeta
 PRIMOS = [71,67,59,53,47,43,41,37,29,23,19,17,13,7,3]
 K = 11
 
+"""
 STATES_NAME = {
     'invisible': (Eval('regime_tax') not in (
         'regimen_simplificado', 'regimen_comun', 'persona_natural',
 ))}
-
+"""
 
 class Party:
     __name__ = 'party.party'
@@ -31,22 +32,16 @@ class Party:
                 'readonly': ~Eval('active', True),
                 'required': Equal(Eval('vat_country'), 'EC'),
             },  depends=['active'])
-    regime_tax = fields.Selection([
-            ('', ''),
-            ('autoretenedor', 'Autoretenedor'),
-            ('persona_natural', 'Persona Natural'),
-            ('regimen_simplificado', 'Regimen Simplificado'),
-            ('regimen_comun', 'Regimen Comun'),
-            ('gran_contribuyente', 'Gran Contribuyente'),
-            ('entidad_estatal', 'Entidad Estatal'),
-            ('domiciliado_extranjero', 'Domiciliado en Extranjero'),
-            ], 'Regimen de Impuestos')
+    mandatory_accounting = fields.Selection([
+            ('yes', 'Si'),
+            ('no', 'No'),
+            ], 'Contabilidad Obligatoria')
     check_digit = fields.Function(fields.Integer('DV'), 
             'get_check_digit')
-    first_name = fields.Char('Primer Nombre', states=STATES_NAME)
-    second_name = fields.Char('Segundo Nombre', states=STATES_NAME)
-    first_family_name = fields.Char('Primer Apellido', states=STATES_NAME)
-    second_family_name = fields.Char('Segundo Apellido', states=STATES_NAME)
+    first_name = fields.Char('Primer Nombre')
+    second_name = fields.Char('Segundo Nombre')
+    first_family_name = fields.Char('Primer Apellido')
+    second_family_name = fields.Char('Segundo Apellido')
     commercial_name = fields.Char('Commercial Name')
 
     @classmethod
@@ -59,6 +54,10 @@ class Party:
                 'VAT Number already exists!'),
         ]
 
+    @staticmethod
+    def default_vat_country():
+        return 'EC'
+
     @classmethod
     def search_rec_name(cls, name, clause):
         parties = cls.search([
@@ -67,6 +66,12 @@ class Party:
         if parties:
             return [('vat_number',) + tuple(clause[1:])]
         return [('name',) + tuple(clause[1:])]
+
+    @classmethod
+    def validate(cls, parties):
+        for party in parties:
+            if party.type_document == '04' and bool(party.vat_number):
+                super(Party, cls).validate(parties)
 
     def pre_validate(self):
         if not self.vat_number:
