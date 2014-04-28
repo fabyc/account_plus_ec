@@ -20,20 +20,17 @@ STATES_NAME = {
 class Party:
     __name__ = 'party.party'
     vat_number_city = fields.Char('VAT Number City', states={
-            'invisible': (Eval('regime_tax') != 'persona_natural'),
-            })
+            'readonly': ~Eval('active', True)})
     type_document = fields.Selection([
-            ('11', 'Registro Civil de Nacimiento'),
-            ('12', 'Tarjeta de Identidad'),
-            ('13', 'Cedula de Ciudadania'),
-            ('21', 'Tarjeta de Extranjeria'),
-            ('22', 'Cedula de Extranjeria'),
-            ('31', 'NIT'),
-            ('41', 'Pasaporte'),
-            ('42', 'Tipo de Documento Extranjero'),
-            ('43', 'Sin identificacion del Exterior o para uso definido por la DIAN'),
-            ('', ''),
-            ], 'Type Document') 
+                ('', ''),
+                ('04', 'RUC'),
+                ('05', 'Cedula'),
+                ('06', 'Pasaporte'),
+                ('07', 'Consumidor Final'),
+            ], 'Type Document', states={
+                'readonly': ~Eval('active', True),
+                'required': Equal(Eval('vat_country'), 'EC'),
+            },  depends=['active'])
     regime_tax = fields.Selection([
             ('', ''),
             ('autoretenedor', 'Autoretenedor'),
