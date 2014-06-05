@@ -3,7 +3,7 @@
 
 from trytond.pool import PoolMeta
 from trytond.model import fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Equal
 
 __all__ = ['Party', 'BankAccountNumber']
 __metaclass__ = PoolMeta
@@ -33,9 +33,9 @@ class Party:
                 'required': Equal(Eval('vat_country'), 'EC'),
             },  depends=['active'])
     mandatory_accounting = fields.Selection([
-            ('yes', 'Si'),
+            ('yes', 'Yes'),
             ('no', 'No'),
-            ], 'Contabilidad Obligatoria')
+            ], 'Mandatory Accounting')
     check_digit = fields.Function(fields.Integer('DV'), 
             'get_check_digit')
     first_name = fields.Char('Primer Nombre')
