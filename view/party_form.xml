@@ -15,12 +15,6 @@ this repository contains the full copyright notices and license terms. -->
         <field name="type_document"/>
     </xpath>
     <xpath
-        expr="/form/notebook/page[@id='accounting']/field[@name='vat_number']"
-        position="after">
-        <label name="check_digit"/>
-        <field name="check_digit"/>
-    </xpath>
-    <xpath
         expr="/form/notebook/page[@id='accounting']"
         position="after">
         <page string="Fiscal" id="fiscal">

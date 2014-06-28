@@ -36,8 +36,6 @@ class Party:
             ('yes', 'Yes'),
             ('no', 'No'),
             ], 'Mandatory Accounting')
-    check_digit = fields.Function(fields.Integer('DV'), 
-            'get_check_digit')
     first_name = fields.Char('Primer Nombre')
     second_name = fields.Char('Segundo Nombre')
     first_family_name = fields.Char('Primer Apellido')
@@ -77,26 +75,28 @@ class Party:
         if not self.vat_number:
             return
         vat_number = self.vat_number.replace(".", "")
-        if not vat_number.isdigit():
-            self.raise_user_error('invalid_vat_number', (self.vat_number,))
-            return
 
-    def get_check_digit(self, name):
-        if not self.vat_number or self.type_document != '31':
-            return None
-        vat_number = self.vat_number.replace(".", "")
-        if not vat_number.isdigit():
-            return None
-        c = 0
-        p = len(PRIMOS)-1
-        for n in reversed(vat_number):
-            c += int(n) * PRIMOS[p]
-            p -= 1
+        if vat_number.isdigit() and len(self.vat_number) > 8:
+            check_digit = self.vat_number[8]
+            computed_check_digit = self.compute_check_digit(self.vat_number[:8])
+            print check_digit
+            print computed_check_digit
+            if computed_check_digit == int(check_digit):
+                return
+        self.raise_user_error('invalid_vat_number', (self.vat_number,))
 
-        dv = c % 11
-        if dv > 1:
-            dv = 11 - dv
-        return dv
+
+    @classmethod
+    def compute_check_digit(cls, number):
+        "Compute the check digit - Modulus 11"
+        factor = 2
+        x = 0
+        for n in reversed(number):
+            x += int(n) * factor
+            factor += 1
+            if factor == 8:
+                factor = 2
+        return (11 - (x % 11))
 
 
 class BankAccountNumber:
