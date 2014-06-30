@@ -32,5 +32,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_force_invoice_draw"/>
         </record>
 
+
+        <record model="ir.action.report" id="report_invoice_withhold_certificate">
+            <field name="name">Withhold Certificate</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.withhold_certificate</field>
+            <field name="report">account_plus_ec/withhold_certificate.odt</field>
+            <field name="style">company/letter.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_invoice_withhold_Certificate_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="report_invoice_withhold_certificate"/>
+        </record>
+
     </data>
 </tryton>

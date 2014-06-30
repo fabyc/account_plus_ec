@@ -31,6 +31,7 @@ def register():
         TrialBalance,
         BalanceSheet,
         IncomeStatement,
+        WithholdCertificate,
         module='account_plus_ec', type_='report')
     Pool.register(
         MoveForceDraw,
