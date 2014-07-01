@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
+#! -*- coding: utf8 -*-
 from trytond.pool import PoolMeta
 from trytond.model import fields
 from trytond.pyson import Eval, Equal
@@ -41,6 +41,16 @@ class Party:
     first_family_name = fields.Char('Primer Apellido')
     second_family_name = fields.Char('Segundo Apellido')
     commercial_name = fields.Char('Commercial Name')
+    type_party = fields.Selection([
+        ('sociedad', 'Sociedad'),
+        ('persona_natural', 'Personal natural'),
+        ('contribuyente_especial', 'Contribuyente especial'),
+        ('entidad_publica', 'Entidad del sector publico'),
+        ('companias_seguros', 'Companias de aseguros y reaseguros'),
+        ], 'Type Party', required=True)
+    registro_mercantil = fields.Char('Registro Mercantil', states={
+            'readonly': ~Eval('active', True)})
+    start_activities = fields.Date('Start Activities')
 
     @classmethod
     def __setup__(cls):
@@ -79,8 +89,6 @@ class Party:
         if vat_number.isdigit() and len(self.vat_number) > 8:
             check_digit = self.vat_number[8]
             computed_check_digit = self.compute_check_digit(self.vat_number[:8])
-            print check_digit
-            print computed_check_digit
             if computed_check_digit == int(check_digit):
                 return
         self.raise_user_error('invalid_vat_number', (self.vat_number,))

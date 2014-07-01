@@ -18,10 +18,17 @@ this repository contains the full copyright notices and license terms. -->
         expr="/form/notebook/page[@id='accounting']"
         position="after">
         <page string="Fiscal" id="fiscal">
+            <label name="type_party"/>
+            <field name="type_party"/>
             <label name="mandatory_accounting"/>
             <field name="mandatory_accounting"/>
             <label name="vat_number_city"/>
             <field name="vat_number_city"/>
+            <label name="registro_mercantil"/>
+            <field name="registro_mercantil"/>
+            <label name="start_activities"/>
+            <field name="start_activities"/>
+            <newline/>
             <label name="first_name"/>
             <field name="first_name"/>
             <label name="second_name"/>
