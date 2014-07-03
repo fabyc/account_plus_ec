@@ -39,7 +39,6 @@ class Line:
         super(Line, cls).__setup__()
         cls._order[0] = ('debit', 'DESC')
 
-    """
     @classmethod
     def query_get(cls, table):
         # THIS METHOD ADD PARTY CONTEXT TO QUERYS
@@ -150,7 +149,7 @@ class Line:
                                     where=period.fiscalyear.in_(
                                         fiscalyear_ids))))),
                     fiscalyear_ids)
-    """
+
 
 class MoveForceDrawStart(ModelView):
     'Move Force Draw'

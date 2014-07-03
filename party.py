@@ -8,15 +8,6 @@ from trytond.pyson import Eval, Equal
 __all__ = ['Party', 'BankAccountNumber']
 __metaclass__ = PoolMeta
 
-PRIMOS = [71,67,59,53,47,43,41,37,29,23,19,17,13,7,3]
-K = 11
-
-"""
-STATES_NAME = {
-    'invisible': (Eval('regime_tax') not in (
-        'regimen_simplificado', 'regimen_comun', 'persona_natural',
-))}
-"""
 
 class Party:
     __name__ = 'party.party'

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.action.report" id="report_sale_reference_guide">
+            <field name="name">Reference Guide</field>
+            <field name="model">sale.sale</field>
+            <field name="report_name">sale.reference_guide</field>
+            <field name="report">account_plus_ec/reference_guide.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_sale_reference_guide_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="report_sale_reference_guide"/>
+        </record>
+
+    </data>
+</tryton>

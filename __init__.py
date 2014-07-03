@@ -6,6 +6,7 @@ from .configuration import *
 from .party import *
 from .invoice import *
 from .account import *
+from .sale import *
 
 def register():
     Pool.register(
@@ -32,6 +33,7 @@ def register():
         BalanceSheet,
         IncomeStatement,
         WithholdCertificate,
+        ReferenceGuide,
         module='account_plus_ec', type_='report')
     Pool.register(
         MoveForceDraw,
