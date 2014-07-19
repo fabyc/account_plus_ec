@@ -33,12 +33,13 @@ class Party:
     second_family_name = fields.Char('Segundo Apellido')
     commercial_name = fields.Char('Commercial Name')
     type_party = fields.Selection([
+        ('', ''),
         ('sociedad', 'Sociedad'),
         ('persona_natural', 'Personal natural'),
         ('contribuyente_especial', 'Contribuyente especial'),
         ('entidad_publica', 'Entidad del sector publico'),
         ('companias_seguros', 'Companias de aseguros y reaseguros'),
-        ], 'Type Party', required=True)
+        ], 'Type Party', required=False)
     registro_mercantil = fields.Char('Registro Mercantil', states={
             'readonly': ~Eval('active', True)})
     start_activities = fields.Date('Start Activities')
