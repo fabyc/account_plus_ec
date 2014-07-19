@@ -26,7 +26,7 @@ class Party:
     mandatory_accounting = fields.Selection([
             ('yes', 'Yes'),
             ('no', 'No'),
-            ], 'Mandatory Accounting')
+            ], 'Mandatory Accounting', required=True)
     first_name = fields.Char('Primer Nombre')
     second_name = fields.Char('Segundo Nombre')
     first_family_name = fields.Char('Primer Apellido')
