@@ -15,6 +15,7 @@ def register():
         Move,
         Line,
         Invoice,
+        Address,
         MoveForceDrawStart,
         InvoiceForceDrawStart,
         AuxiliaryBookStart,

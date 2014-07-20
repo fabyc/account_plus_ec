@@ -5,7 +5,7 @@ from trytond.pool import PoolMeta
 from trytond.model import fields
 from trytond.pyson import Eval, Equal
 
-__all__ = ['Party', 'BankAccountNumber']
+__all__ = ['Party', 'BankAccountNumber', 'Address']
 __metaclass__ = PoolMeta
 
 
@@ -78,25 +78,65 @@ class Party:
             return
         vat_number = self.vat_number.replace(".", "")
 
-        if vat_number.isdigit() and len(self.vat_number) > 8:
-            check_digit = self.vat_number[8]
-            computed_check_digit = self.compute_check_digit(self.vat_number[:8])
-            if computed_check_digit == int(check_digit):
+        if vat_number.isdigit() and len(vat_number) > 9:
+            is_valid = self.compute_check_digit(vat_number)
+            if is_valid:
                 return
         self.raise_user_error('invalid_vat_number', (self.vat_number,))
 
-
-    @classmethod
-    def compute_check_digit(cls, number):
-        "Compute the check digit - Modulus 11"
+    def compute_check_digit(self, raw_number):
+        "Compute the check digit - Modulus 10 y 11"
         factor = 2
         x = 0
-        for n in reversed(number):
-            x += int(n) * factor
-            factor += 1
-            if factor == 8:
-                factor = 2
-        return (11 - (x % 11))
+        set_check_digit = None
+        if self.type_party in ['persona_natural', 'companias_seguros'] or \
+            self.type_document == '05':
+            if self.type_document != '05' and len(raw_number) != 13:
+                return
+            number = raw_number[:9]
+            set_check_digit = raw_number[9]
+            for n in number:
+                y = int(n) * factor
+                if y >= 10:
+                    y = int(str(y)[0]) + int(str(y)[1])
+                x += y
+                if factor == 2:
+                    factor = 1
+                else:
+                    factor = 2
+            res = (x % 10)
+            if res ==  0:
+                value = 0
+            else:
+                value = 10 - (x % 10)
+        elif self.type_party == 'entidad_publica':
+            if not len(raw_number) == 13:
+                return
+            number = raw_number[:8]
+            set_check_digit = raw_number[8]
+            for n in reversed(number):
+                x += int(n) * factor
+                factor += 1
+                if factor == 8:
+                    factor = 2
+            value = 11 - (x % 11)
+            if value == 11:
+                value = 0
+        else:
+            if not len(raw_number) == 13:
+                return
+            number = raw_number[:9]
+            set_check_digit = raw_number[9]
+            for n in reversed(number):
+                x += int(n) * factor
+                factor += 1
+                if factor == 8:
+                    factor = 2
+            value = 11 - (x % 11)
+            if value == 11:
+                value = 0
+
+        return (set_check_digit == str(value))
 
 
 class BankAccountNumber:
@@ -111,3 +151,11 @@ class BankAccountNumber:
         ]
         if new_sel not in cls.type.selection:
             cls.type.selection.extend(new_sel)
+
+
+class Address:
+    __name__ = 'party.address'
+
+    @staticmethod
+    def default_country():
+        return 'EC'
