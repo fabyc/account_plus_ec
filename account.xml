@@ -97,5 +97,152 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.account.type,-1</field>
             <field name="action" ref="report_income_statement"/>
         </record>
+
+        <record model="ir.ui.view" id="account_view_form">
+            <field name="model">account.account</field>
+            <field name="inherit" ref="account.account_view_form"/>
+            <field name="name">account_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_cashflow_template_view_form">
+            <field name="model">account.account.cashflow.template</field>
+            <field name="type">form</field>
+            <field name="name">account_cashflow_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_cashflow_template_view_list">
+            <field name="model">account.account.cashflow.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">account_cashflow_template_list</field>
+        </record>
+        <record model="ir.ui.view" id="account_cashflow_template_view_tree">
+            <field name="model">account.account.cashflow.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">account_cashflow_template_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_cashflow_template_tree">
+            <field name="name">Account Cashflow Templates</field>
+            <field name="res_model">account.account.cashflow.template</field>
+            <field name="domain">[('parent', '=', None)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_account_cashflow_template_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_cashflow_template_view_tree"/>
+            <field name="act_window" ref="act_account_cashflow_template_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_account_cashflow_template_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_cashflow_template_view_form"/>
+            <field name="act_window" ref="act_account_cashflow_template_tree"/>
+        </record>
+        <menuitem parent="account.menu_general_account_configuration"
+            action="act_account_cashflow_template_tree"
+            id="menu_account_cashflow_template_tree"/>
+
+        <record model="ir.ui.view" id="account_cashflow_view_form">
+            <field name="model">account.account.cashflow</field>
+            <field name="type">form</field>
+            <field name="name">account_cashflow_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_cashflow_view_tree">
+            <field name="model">account.account.cashflow</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">account_cashflow_tree</field>
+        </record>
+        <record model="ir.ui.view" id="account_cashflow_view_list">
+            <field name="model">account.account.cashflow</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">account_cashflow_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_cashflow_tree">
+            <field name="name">Account Cashflows</field>
+            <field name="res_model">account.account.cashflow</field>
+            <field name="domain">[('parent', '=', None)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_cashflow_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_cashflow_view_tree"/>
+            <field name="act_window" ref="act_account_cashflow_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_cashflow_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_cashflow_view_form"/>
+            <field name="act_window" ref="act_account_cashflow_tree"/>
+        </record>
+        <menuitem parent="account.menu_general_account_configuration"
+            action="act_account_cashflow_tree" id="menu_account_cashflow_tree"/>
+
+        <record model="ir.action.act_window" id="act_account_cashflow_list">
+            <field name="name">Account Cashflows</field>
+            <field name="res_model">account.account.cashflow</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_cashflow_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_cashflow_view_list"/>
+            <field name="act_window" ref="act_account_cashflow_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_cashflow_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_cashflow_view_form"/>
+            <field name="act_window" ref="act_account_cashflow_list"/>
+        </record>
+        <menuitem parent="account_plus.menu_account_cashflow_tree"
+            action="act_account_cashflow_list" id="menu_account_cashflow_list"
+            sequence="10"/>
+
+        <record model="ir.ui.view" id="open_cashflow_state_start_view_form">
+            <field name="model">account.open_cashflow_state.start</field>
+            <field name="type">form</field>
+            <field name="name">open_cashflow_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_cashflow_state_view_tree">
+            <field name="model">account.account.cashflow</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">account_cashflow_state_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_cashflow_state_tree">
+            <field name="name">Cash Flow State</field>
+            <field name="res_model">account.account.cashflow</field>
+            <field name="domain">[('parent', '=', None)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cashflow_state_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_cashflow_state_view_tree"/>
+            <field name="act_window" ref="act_account_cashflow_state_tree"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_open_cashflow_state">
+            <field name="name">Open Cash Flow State</field>
+            <field name="wiz_name">account.open_cashflow_state</field>
+        </record>
+        <menuitem parent="account.menu_reporting" action="wizard_open_cashflow_state"
+            id="menu_open_cashflow_state" icon="tryton-tree"
+            name="Cash Flow State"/>
+
+        <record model="ir.model.access" id="access_account_cashflow">
+            <field name="model" search="[('model', '=', 'account.account.cashflow')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_cashflow_account_admin">
+            <field name="model" search="[('model', '=', 'account.account.cashflow')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>

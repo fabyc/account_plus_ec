@@ -6,16 +6,17 @@ from .configuration import *
 from .party import *
 from .invoice import *
 from .account import *
-from .sale import *
 
 def register():
     Pool.register(
+        CashflowTemplate,
+        Cashflow,
+        Account,
         Party,
         Configuration,
         Move,
         Line,
         Invoice,
-        Address,
         MoveForceDrawStart,
         InvoiceForceDrawStart,
         AuxiliaryBookStart,
@@ -23,7 +24,8 @@ def register():
         PrintTrialBalanceDetailedStart,
         PrintTrialBalanceStart,
         BankAccountNumber,
-        module='account_plus_ec', type_='model')
+        OpenCashflowStart,
+        module='account_plus', type_='model')
     Pool.register(
         AccountMoveSheet,
         AuxiliaryBook,
@@ -33,9 +35,7 @@ def register():
         TrialBalance,
         BalanceSheet,
         IncomeStatement,
-        WithholdCertificate,
-        ReferenceGuide,
-        module='account_plus_ec', type_='report')
+        module='account_plus', type_='report')
     Pool.register(
         MoveForceDraw,
         InvoiceForceDraw,
@@ -43,4 +43,5 @@ def register():
         PrintTrialBalanceDetailed,
         PrintAuxiliaryParty,
         PrintTrialBalance,
-        module='account_plus_ec', type_='wizard')
+        OpenCashflowState,
+        module='account_plus', type_='wizard')
