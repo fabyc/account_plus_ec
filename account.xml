@@ -5,18 +5,18 @@ this repository contains the full copyright notices and license terms. -->
     <data>
         <!-- Balance Trial Detailed -->
         <record model="ir.ui.view" id="print_trial_balance_detailed_start_view_form">
-            <field name="model">account_plus.print_trial_balance_detailed.start</field>
+            <field name="model">account_plus_ec.print_trial_balance_detailed.start</field>
             <field name="type">form</field>
             <field name="name">trial_balance_detailed_start_form</field>
         </record>
         <record model="ir.action.wizard" id="wizard_trial_balance_detailed">
             <field name="name">Trial Balance Detailed</field>
-            <field name="wiz_name">account_plus.print_trial_balance_detailed</field>
+            <field name="wiz_name">account_plus_ec.print_trial_balance_detailed</field>
         </record>
         <record model="ir.action.report" id="report_trial_balance_detailed">
             <field name="name">Trial Balance Detailed</field>
             <field name="model"></field>
-            <field name="report_name">account_plus.trial_balance_detailed</field>
+            <field name="report_name">account_plus_ec.trial_balance_detailed</field>
             <field name="report">account_plus/trial_balance_detailed.odt</field>
         </record>
         <menuitem parent="account.menu_reporting" action="wizard_trial_balance_detailed"
@@ -24,14 +24,14 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- Print Auxiliary Book -->
         <record model="ir.ui.view" id="print_auxiliary_book_start_view_form">
-            <field name="model">account_plus.print_auxiliary_book.start</field>
+            <field name="model">account_plus_ec.print_auxiliary_book.start</field>
             <field name="type">form</field>
             <field name="name">print_auxiliary_book_start_form</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_print_auxiliary_book">
             <field name="name">Print Auxiliary Book</field>
-            <field name="wiz_name">account_plus.print_auxiliary_book</field>
+            <field name="wiz_name">account_plus_ec.print_auxiliary_book</field>
         </record>
 
         <menuitem parent="account.menu_reporting" action="wizard_print_auxiliary_book"
@@ -46,14 +46,14 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- Print Auxiliary Party -->
         <record model="ir.ui.view" id="print_auxiliary_party_start_view_form">
-            <field name="model">account_plus.print_auxiliary_party.start</field>
+            <field name="model">account_plus_ec.print_auxiliary_party.start</field>
             <field name="type">form</field>
             <field name="name">print_auxiliary_party_start_form</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_print_auxiliary_party">
             <field name="name">Print Auxiliary Party</field>
-            <field name="wiz_name">account_plus.print_auxiliary_party</field>
+            <field name="wiz_name">account_plus_ec.print_auxiliary_party</field>
         </record>
 
         <menuitem parent="account.menu_reporting" action="wizard_print_auxiliary_party"
@@ -194,7 +194,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_cashflow_view_form"/>
             <field name="act_window" ref="act_account_cashflow_list"/>
         </record>
-        <menuitem parent="account_plus.menu_account_cashflow_tree"
+        <menuitem parent="account_plus_ec.menu_account_cashflow_tree"
             action="act_account_cashflow_list" id="menu_account_cashflow_list"
             sequence="10"/>
 

@@ -58,6 +58,10 @@ class Party:
     def default_vat_country():
         return 'EC'
 
+    @staticmethod
+    def default_mandatory_accounting():
+        return 'no'
+
     @classmethod
     def search_rec_name(cls, name, clause):
         parties = cls.search([
@@ -91,7 +95,9 @@ class Party:
         set_check_digit = None
         if self.type_party in ['persona_natural', 'companias_seguros'] or \
             self.type_document == '05':
-            if self.type_document != '05' and len(raw_number) != 13:
+            cond1 = (self.type_document != '05' and len(raw_number) != 13)
+            cond2 = (self.type_party == 'persona_natural' and int(raw_number[2]) > 5)
+            if cond1 or cond2:
                 return
             number = raw_number[:9]
             set_check_digit = raw_number[9]
@@ -110,7 +116,7 @@ class Party:
             else:
                 value = 10 - (x % 10)
         elif self.type_party == 'entidad_publica':
-            if not len(raw_number) == 13:
+            if not len(raw_number) == 13 or raw_number[2] != '6':
                 return
             number = raw_number[:8]
             set_check_digit = raw_number[8]
@@ -123,7 +129,8 @@ class Party:
             if value == 11:
                 value = 0
         else:
-            if not len(raw_number) == 13:
+            if not len(raw_number) == 13 or \
+                (self.type_party == 'sociedad' and int(raw_number[2]) != 9):
                 return
             number = raw_number[:9]
             set_check_digit = raw_number[9]

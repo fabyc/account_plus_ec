@@ -44,7 +44,7 @@ class Account:
 
 class AuxiliaryBookStart(ModelView):
     'Auxiliary Book Start'
-    __name__ = 'account_plus.print_auxiliary_book.start'
+    __name__ = 'account_plus_ec.print_auxiliary_book.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True)
     start_period = fields.Many2One('account.period', 'Start Period',
@@ -94,13 +94,13 @@ class AuxiliaryBookStart(ModelView):
 
 class PrintAuxiliaryBook(Wizard):
     'Print Auxiliary Book'
-    __name__ = 'account_plus.print_auxiliary_book'
-    start = StateView('account_plus.print_auxiliary_book.start',
-        'account_plus.print_auxiliary_book_start_view_form', [
+    __name__ = 'account_plus_ec.print_auxiliary_book'
+    start = StateView('account_plus_ec.print_auxiliary_book.start',
+        'account_plus_ec.print_auxiliary_book_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account_plus.report_auxiliary_book')
+    print_ = StateAction('account_plus_ec.report_auxiliary_book')
 
     def do_print_(self, action):
         if self.start.start_period:
@@ -356,7 +356,7 @@ class PortfolioByPartyDetailed(Report):
 
 class PrintTrialBalanceDetailedStart(ModelView):
     'Print Trial Balance Detailed'
-    __name__ = 'account_plus.print_trial_balance_detailed.start'
+    __name__ = 'account_plus_ec.print_trial_balance_detailed.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, depends=['start_period', 'end_period'])
     start_period = fields.Many2One('account.period', 'Start Period',
@@ -407,13 +407,13 @@ class PrintTrialBalanceDetailedStart(ModelView):
 
 class PrintTrialBalanceDetailed(Wizard):
     'Print Trial Balance Detailed'
-    __name__ = 'account_plus.print_trial_balance_detailed'
-    start = StateView('account_plus.print_trial_balance_detailed.start',
-        'account_plus.print_trial_balance_detailed_start_view_form', [
+    __name__ = 'account_plus_ec.print_trial_balance_detailed'
+    start = StateView('account_plus_ec.print_trial_balance_detailed.start',
+        'account_plus_ec.print_trial_balance_detailed_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account_plus.report_trial_balance_detailed')
+    print_ = StateAction('account_plus_ec.report_trial_balance_detailed')
 
     def do_print_(self, action):
         if self.start.start_period:
@@ -454,7 +454,7 @@ class PrintTrialBalanceDetailed(Wizard):
 
 
 class TrialBalanceDetailed(Report):
-    __name__ = 'account_plus.trial_balance_detailed'
+    __name__ = 'account_plus_ec.trial_balance_detailed'
 
     @classmethod
     def parse(cls, report, objects, data, localcontext):
@@ -596,7 +596,7 @@ class TrialBalanceDetailed(Report):
 
 class AuxiliaryPartyStart(ModelView):
     'Auxiliary Party Start'
-    __name__ = 'account_plus.print_auxiliary_party.start'
+    __name__ = 'account_plus_ec.print_auxiliary_party.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True)
     start_period = fields.Many2One('account.period', 'Start Period',
@@ -644,13 +644,13 @@ class AuxiliaryPartyStart(ModelView):
 
 class PrintAuxiliaryParty(Wizard):
     'Print Auxiliary Party'
-    __name__ = 'account_plus.print_auxiliary_party'
-    start = StateView('account_plus.print_auxiliary_party.start',
-        'account_plus.print_auxiliary_party_start_view_form', [
+    __name__ = 'account_plus_ec.print_auxiliary_party'
+    start = StateView('account_plus_ec.print_auxiliary_party.start',
+        'account_plus_ec.print_auxiliary_party_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account_plus.report_auxiliary_party')
+    print_ = StateAction('account_plus_ec.report_auxiliary_party')
 
     def do_print_(self, action):
         if self.start.start_period:
@@ -1223,11 +1223,11 @@ class OpenCashflowState(Wizard):
     'Open Cashflow State'
     __name__ = 'account.open_cashflow_state'
     start = StateView('account.open_cashflow_state.start',
-        'account_plus.open_cashflow_state_start_view_form', [
+        'account_plus_ec.open_cashflow_state_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Open', 'open_', 'tryton-ok', default=True),
             ])
-    open_ = StateAction('account_plus.act_account_cashflow_state_tree')
+    open_ = StateAction('account_plus_ec.act_account_cashflow_state_tree')
 
     def do_open_(self, action):
         pool = Pool()

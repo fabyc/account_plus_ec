@@ -25,7 +25,7 @@ def register():
         PrintTrialBalanceStart,
         BankAccountNumber,
         OpenCashflowStart,
-        module='account_plus', type_='model')
+        module='account_plus_ec', type_='model')
     Pool.register(
         AccountMoveSheet,
         AuxiliaryBook,
@@ -35,7 +35,7 @@ def register():
         TrialBalance,
         BalanceSheet,
         IncomeStatement,
-        module='account_plus', type_='report')
+        module='account_plus_ec', type_='report')
     Pool.register(
         MoveForceDraw,
         InvoiceForceDraw,
@@ -44,4 +44,4 @@ def register():
         PrintAuxiliaryParty,
         PrintTrialBalance,
         OpenCashflowState,
-        module='account_plus', type_='wizard')
+        module='account_plus_ec', type_='wizard')
