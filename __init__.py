@@ -29,6 +29,7 @@ def register():
         AccountAuthorization,
         AccountAtsSustento,
         Journal,
+        Company,
         module='account_plus_ec', type_='model')
     Pool.register(
         AccountMoveSheet,

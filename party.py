@@ -5,7 +5,7 @@ from trytond.pool import PoolMeta
 from trytond.model import fields
 from trytond.pyson import Eval, Equal
 
-__all__ = ['Party', 'BankAccountNumber', 'Address']
+__all__ = ['Party', 'BankAccountNumber', 'Address', 'Company']
 __metaclass__ = PoolMeta
 
 
@@ -166,3 +166,9 @@ class Address:
     @staticmethod
     def default_country():
         return 'EC'
+
+
+class Company:
+    __name__ = 'company.company'
+    sms_url = fields.Char('SMS Url')
+    sms_active = fields.Boolean('SMS Active')
