@@ -25,6 +25,10 @@ def register():
         PrintTrialBalanceStart,
         BankAccountNumber,
         OpenCashflowStart,
+        AccountAtsDoc,
+        AccountAuthorization,
+        AccountAtsSustento,
+        Journal,
         module='account_plus_ec', type_='model')
     Pool.register(
         AccountMoveSheet,

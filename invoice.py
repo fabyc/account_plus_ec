@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import ModelView, fields
+from trytond.model import ModelView, fields, ModelSQL
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 from trytond.wizard import Wizard, StateTransition
@@ -9,7 +9,7 @@ from trytond.transaction import Transaction
 from trytond.modules.company import CompanyReport
 
 __all__ = ['Invoice', 'InvoiceForceDrawStart', 'InvoiceForceDraw',
-    'WithholdCertificate']
+    'WithholdCertificate', 'AccountAtsDoc', 'AccountAtsSustento']
 __metaclass__ = PoolMeta
 
 
@@ -86,3 +86,18 @@ class WithholdCertificate(CompanyReport):
                 
         return super(WithholdCertificate, cls).parse(report,
                 new_objects, data, localcontext)
+
+
+class AccountAtsDoc(ModelView, ModelSQL):
+    "Account Ats Doc"
+    __name__ = 'account.ats.doc'
+    code = fields.Char('Codigo', size=2, required=True),
+    name = fields.Char('Tipo Comprobante', size=64, required=True)
+
+
+class AccountAtsSustento(ModelView, ModelSQL):
+    'Sustento del Comprobante'
+    __name__ = 'account.ats.sustento'
+    _rec_name = 'type_'
+    code = fields.Char('Codigo', size=2, required=True),
+    type_ = fields.Char('Tipo de Sustento', size=64, required=True)

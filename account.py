@@ -20,7 +20,8 @@ __all__ = ['AuxiliaryBookStart', 'PrintAuxiliaryBook', 'AuxiliaryBook',
         'PrintAuxiliaryParty', 'AuxiliaryParty', 'AuxiliaryPartyStart',
         'PrintTrialBalanceStart', 'PrintTrialBalance', 'TrialBalance',
         'BalanceSheet', 'IncomeStatement', 'OpenCashflowState', 'Cashflow',
-        'CashflowTemplate', 'OpenCashflowStart', 'Account']
+        'CashflowTemplate', 'OpenCashflowStart', 'Account', 'Journal',
+        'AccountAuthorization']
 
 __metaclass__ = PoolMeta
 
@@ -1263,3 +1264,32 @@ class OpenCashflowState(Wizard):
                 'company': self.start.company.id,
                 })
         return action, {}
+
+
+class AccountAuthorization(ModelView, ModelSQL):
+    'Authorization Accounting Documents'
+    __name__ = 'account.authorization'
+    sequence = fields.Many2One('ir.sequence', 'Secuencia')
+    name = fields.Char('Num. de Autorizacion', size=128, required=True)
+    serie_entidad = fields.Char('Serie Entidad', size=3, required=True)
+    serie_emision = fields.Char('Serie Emision', size=3, required=True)
+    num_start = fields.Integer('Desde', required=True)
+    num_end = fields.Integer('Hasta', required=True)
+    is_electronic = fields.Boolean('Factura Electronica')
+    expiration_date = fields.Date('Vence', required=True)
+    active = fields.Boolean('Activo')
+    in_type = fields.Selection([
+            ('interno', 'Internas'),
+            ('externo', 'Externas'),
+            ], 'Tipo Interno', readonly=True)
+    type_ = fields.Many2One('account.ats.doc', 'Tipo de Comprobante',
+            required=True)
+    company = fields.Many2One('company.company', 'Company', required=True)
+
+
+class Journal:
+    __name__ = 'account.journal'
+    auth_id = fields.Many2One('account.authorization', 'Autorizacion',
+            help='Autorizacion utilizada para Facturas y Liquidaciones de Compra')
+    auth_ret_id = fields.Many2One('account.authorization','Autorizacion de Ret.',
+            help='Autorizacion utilizada para Retenciones, facturas y liquidaciones')
