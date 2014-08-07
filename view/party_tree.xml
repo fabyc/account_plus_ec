@@ -10,6 +10,10 @@ this repository contains the full copyright notices and license terms. -->
         expr="/tree/field[@name='code']"
         position="after">
         <field name="vat_number"/>
+    </xpath>
+    <xpath
+        expr="/tree/field[@name='name']"
+        position="after">
         <field name="commercial_name"/>
     </xpath>
 </data>
