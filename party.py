@@ -59,6 +59,10 @@ class Party:
         return 'EC'
 
     @staticmethod
+    def default_type_document():
+        return '04'
+
+    @staticmethod
     def default_mandatory_accounting():
         return 'no'
 
