@@ -93,8 +93,7 @@ class Party:
         factor = 2
         x = 0
         set_check_digit = None
-        if self.type_party in ['persona_natural', 'companias_seguros'] or \
-            self.type_document == '05':
+        if self.type_party == 'persona_natural' or self.type_document == '05':
             cond1 = (self.type_document != '05' and len(raw_number) != 13)
             cond2 = (self.type_party == 'persona_natural' and int(raw_number[2]) > 5)
             if cond1 or cond2:
@@ -129,9 +128,9 @@ class Party:
             if value == 11:
                 value = 0
         else:
-            if not len(raw_number) == 13 or \
-                (self.type_party == 'sociedad' and int(raw_number[2]) != 9) or \
-                raw_number[-3:] != '001':
+            if len(raw_number) != 13 or \
+                (self.type_party in ['sociedad', 'companias_seguros'] \
+                and int(raw_number[2]) != 9) or raw_number[-3:] != '001':
                 return
             number = raw_number[:9]
             set_check_digit = raw_number[9]
