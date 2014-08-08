@@ -130,7 +130,8 @@ class Party:
                 value = 0
         else:
             if not len(raw_number) == 13 or \
-                (self.type_party == 'sociedad' and int(raw_number[2]) != 9):
+                (self.type_party == 'sociedad' and int(raw_number[2]) != 9) or \
+                raw_number[-3:] != '001':
                 return
             number = raw_number[:9]
             set_check_digit = raw_number[9]
