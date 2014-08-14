@@ -93,14 +93,14 @@ class Party:
         self.raise_user_error('invalid_vat_number', (self.vat_number,))
 
     def compute_check_digit(self, raw_number):
-        "Compute the check digit - Modulus 10 y 11"
+        "Compute the check digit - Modulus 10 and 11"
         factor = 2
         x = 0
         set_check_digit = None
         if self.type_party == 'persona_natural' or self.type_document == '05':
-            cond1 = (self.type_document != '05' and len(raw_number) != 13)
-            cond2 = (self.type_party == 'persona_natural' and int(raw_number[2]) > 5)
-            if cond1 or cond2:
+            cond1 = self.type_document != '05' and len(raw_number) != 13
+            cond2 = self.type_party == 'persona_natural' and int(raw_number[2]) > 5
+            if cond1 or cond2 or raw_number[-3:] != '001':
                 return
             number = raw_number[:9]
             set_check_digit = raw_number[9]
@@ -119,7 +119,8 @@ class Party:
             else:
                 value = 10 - (x % 10)
         elif self.type_party == 'entidad_publica':
-            if not len(raw_number) == 13 or raw_number[2] != '6':
+            if not len(raw_number) == 13 or raw_number[2] != '6' \
+                or raw_number[-3:] != '001':
                 return
             number = raw_number[:8]
             set_check_digit = raw_number[8]

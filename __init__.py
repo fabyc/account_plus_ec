@@ -30,6 +30,7 @@ def register():
         AccountAtsSustento,
         Journal,
         Company,
+        ATSStart,
         module='account_plus_ec', type_='model')
     Pool.register(
         AccountMoveSheet,
@@ -40,6 +41,7 @@ def register():
         TrialBalance,
         BalanceSheet,
         IncomeStatement,
+        ATS,
         module='account_plus_ec', type_='report')
     Pool.register(
         MoveForceDraw,
@@ -49,4 +51,5 @@ def register():
         PrintAuxiliaryParty,
         PrintTrialBalance,
         OpenCashflowState,
+        PrintATS,
         module='account_plus_ec', type_='wizard')

@@ -45,7 +45,7 @@ setup(name='trytond_account_plus_ec',
     package_data={
         'trytond.modules.account_plus_ec': info.get('xml', []) \
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
-            '*.ods'],
+            '*.ods', '*.xml', '*.xsd'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

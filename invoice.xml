@@ -32,7 +32,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_force_invoice_draw"/>
         </record>
 
-
         <record model="ir.action.report" id="report_invoice_withhold_certificate">
             <field name="name">Withhold Certificate</field>
             <field name="model">account.invoice</field>

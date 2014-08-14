@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Trial Balance Detailed</field>
             <field name="model"></field>
             <field name="report_name">account_plus_ec.trial_balance_detailed</field>
-            <field name="report">account_plus/trial_balance_detailed.odt</field>
+            <field name="report">account_plus_ec/trial_balance_detailed.odt</field>
         </record>
         <menuitem parent="account.menu_reporting" action="wizard_trial_balance_detailed"
             id="menu_trial_balance_detailed" icon="tryton-print"/>
@@ -41,7 +41,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Auxiliary Book</field>
             <field name="model"></field>
             <field name="report_name">account.auxiliary_book</field>
-            <field name="report">account_plus/auxiliary_book.odt</field>
+            <field name="report">account_plus_ec/auxiliary_book.odt</field>
         </record>
 
         <!-- Print Auxiliary Party -->
@@ -63,7 +63,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Auxiliary Party</field>
             <field name="model"></field>
             <field name="report_name">account.auxiliary_party</field>
-            <field name="report">account_plus/auxiliary_party.odt</field>
+            <field name="report">account_plus_ec/auxiliary_party.odt</field>
         </record>
 
         <record model="ir.ui.view" id="print_trial_balance_start_view_form">
@@ -77,7 +77,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Balance Sheet</field>
             <field name="model">account.account.type</field>
             <field name="report_name">account.balance_sheet</field>
-            <field name="report">account_plus/balance_sheet.odt</field>
+            <field name="report">account_plus_ec/balance_sheet.odt</field>
         </record>
         <record model="ir.action.keyword" id="report_balance_sheet_keyword">
             <field name="keyword">form_print</field>
@@ -90,7 +90,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Income Statement</field>
             <field name="model">account.account.type</field>
             <field name="report_name">account.income_statement</field>
-            <field name="report">account_plus/income_statement.odt</field>
+            <field name="report">account_plus_ec/income_statement.odt</field>
         </record>
         <record model="ir.action.keyword" id="report_income_statement_keyword">
             <field name="keyword">form_print</field>
@@ -243,6 +243,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <!-- Print ATS -->
+        <record model="ir.ui.view" id="print_ats_start_view_form">
+            <field name="model">account_plus_ec.print_ats.start</field>
+            <field name="type">form</field>
+            <field name="name">print_ats_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_ats">
+            <field name="name">Print ATS</field>
+            <field name="wiz_name">account_plus_ec.print_ats</field>
+        </record>
+
+        <menuitem parent="account.menu_reporting" action="wizard_print_ats"
+            id="menu_print_ats" icon="tryton-print"/>
+
+        <record model="ir.action.report" id="report_ats">
+            <field name="name">ATS</field>
+            <field name="model"></field>
+            <field name="report_name">account_plus_ec.ats</field>
+            <field name="report">account_plus_ec/ats.xml</field>
         </record>
     </data>
 </tryton>
