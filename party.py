@@ -21,7 +21,6 @@ class Party:
                 ('07', 'Consumidor Final'),
             ], 'Type Document', states={
                 'readonly': ~Eval('active', True),
-                'required': Equal(Eval('vat_country'), 'EC'),
             },  depends=['active'])
     mandatory_accounting = fields.Selection([
             ('yes', 'Yes'),
@@ -39,7 +38,11 @@ class Party:
         ('contribuyente_especial', 'Contribuyente especial'),
         ('entidad_publica', 'Entidad del sector publico'),
         ('companias_seguros', 'Companias de aseguros y reaseguros'),
-        ], 'Type Party', required=False)
+        ], 'Type Party', states={
+                'readonly': ~Eval('active', True),
+                'invisible': Eval('type_document') != '04',
+                }
+        )
     registro_mercantil = fields.Char('Registro Mercantil', states={
             'readonly': ~Eval('active', True)})
     start_activities = fields.Date('Start Activities')
@@ -53,10 +56,6 @@ class Party:
             ('vat_number', 'UNIQUE(vat_number)',
                 'VAT Number already exists!'),
         ]
-
-    @staticmethod
-    def default_vat_country():
-        return 'EC'
 
     @staticmethod
     def default_type_document():
@@ -97,10 +96,59 @@ class Party:
         factor = 2
         x = 0
         set_check_digit = None
-        if self.type_party == 'persona_natural' or self.type_document == '05':
-            cond1 = self.type_document != '05' and len(raw_number) != 13
-            cond2 = self.type_party == 'persona_natural' and int(raw_number[2]) > 5
-            if cond1 or cond2 or raw_number[-3:] != '001':
+        if self.type_document == '04':
+            # Si es RUC valide segun el tipo de tercero
+            if self.type_party == 'persona_natural':
+                if len(raw_number) != 13 or int(raw_number[2]) > 5 or raw_number[-3:] != '001':
+                    return
+                number = raw_number[:9]
+                set_check_digit = raw_number[9]
+                for n in number:
+                    y = int(n) * factor
+                    if y >= 10:
+                        y = int(str(y)[0]) + int(str(y)[1])
+                    x += y
+                    if factor == 2:
+                        factor = 1
+                    else:
+                        factor = 2
+                res = (x % 10)
+                if res ==  0:
+                    value = 0
+                else:
+                    value = 10 - (x % 10)
+            elif self.type_party == 'entidad_publica':
+                if not len(raw_number) == 13 or raw_number[2] != '6' \
+                    or raw_number[-3:] != '001':
+                    return
+                number = raw_number[:8]
+                set_check_digit = raw_number[8]
+                for n in reversed(number):
+                    x += int(n) * factor
+                    factor += 1
+                    if factor == 8:
+                        factor = 2
+                value = 11 - (x % 11)
+                if value == 11:
+                    value = 0
+            else:
+                if len(raw_number) != 13 or \
+                    (self.type_party in ['sociedad', 'companias_seguros'] \
+                    and int(raw_number[2]) != 9) or raw_number[-3:] != '001':
+                    return
+                number = raw_number[:9]
+                set_check_digit = raw_number[9]
+                for n in reversed(number):
+                    x += int(n) * factor
+                    factor += 1
+                    if factor == 8:
+                        factor = 2
+                value = 11 - (x % 11)
+                if value == 11:
+                    value = 0
+        else:
+            #Si no tiene RUC valide: cedula, pasaporte, consumidor final (cedula)
+            if len(raw_number) != 10:
                 return
             number = raw_number[:9]
             set_check_digit = raw_number[9]
@@ -118,36 +166,6 @@ class Party:
                 value = 0
             else:
                 value = 10 - (x % 10)
-        elif self.type_party == 'entidad_publica':
-            if not len(raw_number) == 13 or raw_number[2] != '6' \
-                or raw_number[-3:] != '001':
-                return
-            number = raw_number[:8]
-            set_check_digit = raw_number[8]
-            for n in reversed(number):
-                x += int(n) * factor
-                factor += 1
-                if factor == 8:
-                    factor = 2
-            value = 11 - (x % 11)
-            if value == 11:
-                value = 0
-        else:
-            if len(raw_number) != 13 or \
-                (self.type_party in ['sociedad', 'companias_seguros'] \
-                and int(raw_number[2]) != 9) or raw_number[-3:] != '001':
-                return
-            number = raw_number[:9]
-            set_check_digit = raw_number[9]
-            for n in reversed(number):
-                x += int(n) * factor
-                factor += 1
-                if factor == 8:
-                    factor = 2
-            value = 11 - (x % 11)
-            if value == 11:
-                value = 0
-
         return (set_check_digit == str(value))
 
 
