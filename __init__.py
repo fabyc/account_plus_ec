@@ -9,6 +9,7 @@ from .account import *
 
 def register():
     Pool.register(
+        Address,
         CashflowTemplate,
         Cashflow,
         Account,
@@ -41,6 +42,7 @@ def register():
         TrialBalance,
         BalanceSheet,
         IncomeStatement,
+        WithholdCertificate,
         ATS,
         module='account_plus_ec', type_='report')
     Pool.register(

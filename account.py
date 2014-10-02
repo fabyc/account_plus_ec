@@ -1051,6 +1051,10 @@ class Cashflow(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
     template = fields.Many2One('account.account.cashflow.template', 'Template')
+    accounts = fields.One2Many('account.account', 'cashflow', 'Accounts',
+            add_remove=[], domain=[ 
+                ('kind', '!=', 'view'),
+            ])
 
     @classmethod
     def __setup__(cls):

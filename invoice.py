@@ -83,7 +83,6 @@ class WithholdCertificate(CompanyReport):
                 })
                 obj.total_withholding += invoice_tax.amount
                 new_objects.append(obj)
-                
         return super(WithholdCertificate, cls).parse(report,
                 new_objects, data, localcontext)
 
