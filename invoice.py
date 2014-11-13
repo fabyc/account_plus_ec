@@ -71,7 +71,7 @@ class WithholdCertificate(CompanyReport):
             if not obj.move or obj.state not in ('posted', 'paid'):
                 continue
             for invoice_tax in obj.taxes:
-                if invoice_tax.tax.group.code != GTA_CODE_TAX['RETENCION']:
+                if not invoice_tax.tax.group or invoice_tax.tax.group.code != GTA_CODE_TAX['RETENCION']:
                     continue
                 obj.withholdings.append({
                     'fiscalyear': obj.move.period.fiscalyear.code,
