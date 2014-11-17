@@ -3,7 +3,7 @@
 #! -*- coding: utf8 -*-
 from trytond.pool import PoolMeta
 from trytond.model import fields
-from trytond.pyson import Eval, Equal
+from trytond.pyson import Eval
 
 __all__ = ['Party', 'BankAccountNumber', 'Address', 'Company']
 __metaclass__ = PoolMeta
@@ -76,15 +76,16 @@ class Party:
 
     @classmethod
     def validate(cls, parties):
-        for party in parties:
+        for party in parties:               
             if party.type_document == '04' and bool(party.vat_number):
                 super(Party, cls).validate(parties)
 
     def pre_validate(self):
         if not self.vat_number:
             return
+        if self.vat_number == '9999999999999':
+            return
         vat_number = self.vat_number.replace(".", "")
-
         if vat_number.isdigit() and len(vat_number) > 9:
             is_valid = self.compute_check_digit(vat_number)
             if is_valid:
