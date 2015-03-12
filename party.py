@@ -76,7 +76,7 @@ class Party:
 
     @classmethod
     def validate(cls, parties):
-        for party in parties:               
+        for party in parties:
             if party.type_document == '04' and bool(party.vat_number):
                 super(Party, cls).validate(parties)
 

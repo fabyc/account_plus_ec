@@ -9,7 +9,8 @@ from trytond.transaction import Transaction
 from trytond.modules.company import CompanyReport
 
 __all__ = ['Invoice', 'InvoiceForceDrawStart', 'InvoiceForceDraw',
-    'WithholdCertificate', 'AccountAtsDoc', 'AccountAtsSustento']
+    'WithholdCertificate', 'AccountAtsDoc', 'AccountAtsSustento',
+    'InvoiceReport']
 __metaclass__ = PoolMeta
 
 
@@ -100,3 +101,34 @@ class AccountAtsSustento(ModelView, ModelSQL):
     _rec_name = 'type_'
     code = fields.Char('Codigo', size=2, required=True),
     type_ = fields.Char('Tipo de Sustento', size=64, required=True)
+
+
+class InvoiceReport:
+    __name__ = 'account.invoice'
+
+    @classmethod
+    def parse(cls, report, objects, data, localcontext):
+        for obj in objects:
+            untaxed_food = 0
+            untaxed_education = 0
+            untaxed_clothes = 0
+            untaxed_health = 0
+            for line in obj.lines:
+                if line.product.kind == 'food':
+                    untaxed_food += line.amount
+                elif line.product.kind == 'education':
+                    untaxed_education += line.amount
+                elif line.product.kind == 'clothes':
+                    untaxed_clothes += line.amount
+                elif line.product.kind == 'health':
+                    untaxed_health += line.amount
+                else:
+                    continue
+            setattr(obj, 'untaxed_food', untaxed_food)
+            setattr(obj, 'untaxed_education', untaxed_education)
+            setattr(obj, 'untaxed_clothes', untaxed_clothes)
+            setattr(obj, 'untaxed_health', untaxed_health)
+
+        res = super(InvoiceReport, cls).parse(report, objects, data,
+            localcontext)
+        return res
