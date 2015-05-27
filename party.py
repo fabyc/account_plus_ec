@@ -4,6 +4,7 @@
 from trytond.pool import PoolMeta
 from trytond.model import fields
 from trytond.pyson import Eval
+from trytond.pyson import Id
 
 __all__ = ['Party', 'BankAccountNumber', 'Address', 'Company']
 __metaclass__ = PoolMeta
@@ -189,7 +190,7 @@ class Address:
 
     @staticmethod
     def default_country():
-        return 'EC'
+        return Id('country', 'ec').pyson()
 
 
 class Company:
