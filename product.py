@@ -17,6 +17,7 @@ class Product:
             ('health', 'Health'),
             ('clothes', 'Clothes'),
             ('education', 'Education'),
+            ('home', 'Home'),
             ], 'Kind')
 
     @classmethod
