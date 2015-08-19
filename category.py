@@ -4,13 +4,13 @@
 from trytond.model import fields
 from trytond.pool import PoolMeta
 
-__all__ = ['Product']
+__all__ = ['Category']
 __metaclass__ = PoolMeta
 
 
-class Product:
-    'Product'
-    __name__ = 'product.product'
+class Category:
+    'Category'
+    __name__ = 'product.category'
     kind = fields.Selection([
             ('', ''),
             ('food', 'Food'),
@@ -22,4 +22,4 @@ class Product:
 
     @classmethod
     def __setup__(cls):
-        super(Product, cls).__setup__()
+        super(Category, cls).__setup__()
