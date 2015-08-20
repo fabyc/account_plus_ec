@@ -8,7 +8,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Account Move Sheet</field>
             <field name="model">account.move</field>
             <field name="report_name">account.move.sheet</field>
-            <field name="report">account_plus/move_account_sheet.odt</field>
+            <field name="report">account_plus_ec/move_account_sheet.odt</field>
         </record>
         <record model="ir.action.keyword" id="report_account_move_sheet_keyword">
             <field name="keyword">form_print</field>
