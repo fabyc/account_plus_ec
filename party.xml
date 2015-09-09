@@ -8,7 +8,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Portfolio by Party Detailed</field>
             <field name="model">party.party</field>
             <field name="report_name">party.portfolio_party_detailed</field>
-            <field name="report">account_plus/portfolio_party_detailed.ods</field>
+            <field name="report">account_plus_ec/portfolio_party_detailed.ods</field>
         </record>
         <record model="ir.action.keyword" id="report_portfolio_party_detailed_keyword">
             <field name="keyword">form_print</field>
